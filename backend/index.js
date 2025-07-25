@@ -1,5 +1,5 @@
 import express from "express";
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 // import cors from "cors";
 // import path from "path";
@@ -10,14 +10,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // database connectivity
-// mongoose
-//   .connect(process.env.MONGO)
-//   .then(() => {
-//     console.log("Connected to MongoDB database.");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log("Connected to MongoDB database.");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // express app
 const app = express();
