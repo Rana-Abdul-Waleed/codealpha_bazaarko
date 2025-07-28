@@ -5,7 +5,7 @@ import cors from "cors";
 // import path from "path";
 import cookieParser from "cookie-parser";
 // import userRoutes from "./routes/user.route.js";
-// import authRoutes from "./routes/auth.route.js";
+import authRoutes from "./routes/auth.route.js";
 
 dotenv.config();
 
@@ -39,7 +39,7 @@ app.listen(process.env.port, () => {
 
 // routes
 // app.use("/backend/user", userRoutes);
-// app.use("/backend/auth", authRoutes);
+app.use("/backend/auth", authRoutes);
 
 // custom error middleware
 app.use((err, req, res, next) => {
