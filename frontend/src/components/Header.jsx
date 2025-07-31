@@ -108,7 +108,7 @@ const Header = () => {
                 {userNameFirstLetter}
               </button>
               {showProfileDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg text-sm z-50 overflow-hidden transition-all duration-200">
+                <div className="absolute -right-10 md:-right-12 mt-3 md:mt-4 w-36 md:w-48 bg-gray-100 border border-gray-200 rounded-md shadow-lg text-sm z-50 overflow-hidden transition-all duration-500">
                   {currentUser.user.isAdmin && (
                     <>
                       <div className="px-4 py-2 text-gray-600 font-semibold">
@@ -125,7 +125,7 @@ const Header = () => {
                     <>
                       <Link
                         to="/dashboard?tab=profile"
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
                       >
                         Dashboard
                       </Link>
@@ -135,13 +135,13 @@ const Header = () => {
                   <>
                     <Link
                       to="/orders"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
                     >
                       Orders
                     </Link>
                     <hr />
                   </>
-                  <button className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <button className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
                     Sign Out
                   </button>
                 </div>
@@ -173,26 +173,31 @@ const Header = () => {
       </nav>
 
       {/* Mobile Search Bar Slide Down */}
-      {showMobileSearch && (
-        <form className="md:hidden px-8 py-2 flex items-center bg-white border-t border-b">
-          <input
-            type="text"
-            placeholder="Search for products..."
-            className="flex-1 outline-none px-2 py-1 border border-gray-300 rounded-l-md text-sm"
-          />
-          <button
-            type="submit"
-            className="px-2 bg-pink-500 py-1.5 rounded-r-md text-white transition"
-            aria-label="Search button"
-          >
-            <FaSearch className="text-[17px]" />
-          </button>
-        </form>
-      )}
+      <form
+        className={`md:hidden px-8 py-2 flex items-center bg-white border-t border-b transition-[max-height,opacity,transform] duration-500 ease-in-out overflow-hidden
+      ${
+        showMobileSearch
+          ? "max-h-24 opacity-100 translate-y-0"
+          : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+      >
+        <input
+          type="text"
+          placeholder="Search for products..."
+          className="flex-1 outline-none px-2 py-1 border border-gray-300 rounded-l-md text-sm"
+        />
+        <button
+          type="submit"
+          className="px-2 bg-pink-500 py-1.5 rounded-r-md text-white transition"
+          aria-label="Search button"
+        >
+          <FaSearch className="text-[17px]" />
+        </button>
+      </form>
 
       {/* Slide-In Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-[40%] md:w-[30%] bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-[51px] md:top-[61px] right-0 h-full w-[50%] md:w-[30%] bg-gray-200 z-50 shadow-lg transform transition-transform duration-500 ease-in-out ${
           sidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
