@@ -150,7 +150,7 @@ const Header = () => {
           ) : (
             <Link
               to="/signin"
-              className="flex items-center gap-1 md:gap-2 text-[11px] md:text-[14px] px-3 md:px-4 py-1.5 rounded-full border-2 border-gray-500 text-gray-500 font-semibold hover:bg-pink-500 hover:border-pink-500 hover:text-white transition duration-300 shadow-sm"
+              className="flex items-center gap-1 md:gap-2 text-[11px] md:text-[14px] px-3 md:px-4 py-1.5 rounded-md border-2 border-gray-500 text-gray-500 font-semibold hover:bg-pink-500 hover:border-pink-500 hover:text-white transition duration-300 shadow-sm"
               onClick={() => setActiveTab("login")}
             >
               {" "}
@@ -174,7 +174,7 @@ const Header = () => {
 
       {/* Mobile Search Bar Slide Down */}
       <form
-        className={`md:hidden px-8 py-2 flex items-center bg-white border-t border-b transition-[max-height,opacity,transform] duration-500 ease-in-out overflow-hidden
+        className={`md:hidden px-8 py-2 flex items-center bg-white border-t border-b transition-[max-height,opacity,transform] duration-500 ease-in-out overflow-hidden mb-2
       ${
         showMobileSearch
           ? "max-h-24 opacity-100 translate-y-0"
