@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { hero_assests } from "../assets.js";
+import { dummy_products_data, hero_assests } from "../assets.js";
 
 const Home = () => {
   return (
@@ -38,7 +38,54 @@ const Home = () => {
       </div>
 
       {/* featured products */}
-      <div>featured products</div>
+      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-10 text-center">
+          Our Featured Products
+        </h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {dummy_products_data.map((item) => (
+            <div
+              key={item.p_id}
+              className="bg-gray-100 rounded-md shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+            >
+              {/* Product Image */}
+              <img
+                src={item.p_image}
+                alt={item.p_name}
+                className="w-full h-[220px] object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
+              />
+
+              {/* Product Info */}
+              <div className="p-4 flex flex-col gap-1">
+                <div className="flex justify-between items-center font-semibold text-gray-800">
+                  <h2>{item.p_name}</h2>
+                  <p className="text-black text-[15px]">{item.p_price}</p>
+                </div>
+                <p className="text-sm text-gray-600">{item.p_desc}</p>
+
+                {/* Rating */}
+                <div className="flex items-center text-yellow-500 text-sm gap-1 mt-1">
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span className="text-gray-500 ml-1">(12)</span>
+                </div>
+
+                {/* View Details Button */}
+                <Link
+                  to="/product-details"
+                  className="mt-3 w-full text-center border border-pink-500 hover:border-pink-600 bg-pink-500 hover:bg-pink-600 text-sm text-white py-1.5 rounded-md transition duration-300"
+                >
+                  View Details
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* latest products */}
       <div>latest products</div>
