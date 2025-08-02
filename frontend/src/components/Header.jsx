@@ -134,10 +134,19 @@ const Header = () => {
                   )}
                   <>
                     <Link
-                      to="/orders"
+                      to="/my-orders"
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
                     >
-                      Orders
+                      My Orders
+                    </Link>
+                    <hr />
+                  </>
+                  <>
+                    <Link
+                      to="/favourite-products"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                    >
+                      Favourite Products
                     </Link>
                     <hr />
                   </>
