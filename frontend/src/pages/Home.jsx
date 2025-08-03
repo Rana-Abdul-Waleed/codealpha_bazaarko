@@ -5,7 +5,16 @@ import {
   hero_assests,
   top_categories,
 } from "../assets.js";
-import { FaRegHeart, FaHeart, FaGreaterThan } from "react-icons/fa";
+import {
+  FaRegHeart,
+  FaHeart,
+  FaGreaterThan,
+  FaHeadset,
+  FaUndoAlt,
+  FaBolt,
+  FaLock,
+  FaTruck,
+} from "react-icons/fa";
 
 const Home = () => {
   const heroImages = Object.values(hero_assests);
@@ -44,9 +53,10 @@ const Home = () => {
             BazaarKo - Har Cheez, Ek Jagah!
           </h1>
           <p className="text-[12px] sm:text-[13px] md:text-[14px] text-gray-500 text-center sm:text-justify">
-            Discover top-quality products in fashion, electronics, home décor,
-            and more — handpicked to match your lifestyle and delivered to your
-            door.
+            Explore thousands of premium products across fashion, electronics,
+            home essentials, beauty, and more — all curated to elevate your
+            everyday life. Shop smart, shop fast, and enjoy doorstep delivery,
+            secure payments, and unbeatable deals — only at BazaarKo.
           </p>
           <Link
             to="/products"
@@ -289,7 +299,64 @@ const Home = () => {
       </div>
 
       {/* What bazaarko offers */}
-      <div>What bazaarko offers</div>
+      <div className="flex flex-col gap-4 px-6 sm:px-8 md:px-16 lg:px-24 my-2">
+        <div className="flex items-center justify-start gap-2">
+          <span className="text-pink-500 font-extrabold text-lg">—</span>
+          <h1 className="text-xl md:text-3xl font-bold text-gray-800">
+            What <span className="text-pink-500">BazaarKo</span> Offers!
+          </h1>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+          {/* 24/7 Customer Support */}
+          <div className="flex flex-col items-center justify-around gap-4 text-center bg-gray-100 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 px-2 py-4 rounded-md shadow-md hover:shadow-lg">
+            <FaHeadset className="text-pink-600 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16" />
+            <h2 className="text-gray-800 font-bold text-sm md:text-lg lg:text-xl">
+              24/7 Customer Support
+            </h2>
+            <p className="text-gray-600 text-xs md:text-sm">
+              Get assistance anytime. Our dedicated support team is available
+              24/7 to help you with your orders, returns, or questions.
+            </p>
+          </div>
+
+          {/* Easy Returns & Refunds */}
+          <div className="flex flex-col items-center justify-around gap-4 text-center bg-gray-100 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 px-2 py-4 rounded-md shadow-md hover:shadow-lg">
+            <FaUndoAlt className="text-pink-600 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16" />
+            <h2 className="text-gray-800 font-bold text-sm md:text-lg lg:text-xl">
+              Easy Returns & Refunds
+            </h2>
+            <p className="text-gray-600 text-xs md:text-sm">
+              Not satisfied with your purchase? Enjoy hassle-free returns and
+              quick refunds to make your shopping experience stress-free.
+            </p>
+          </div>
+
+          {/* Secure Online Payments */}
+          <div className="flex flex-col items-center justify-around gap-4 text-center bg-gray-100 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 px-2 py-4 rounded-md shadow-md hover:shadow-lg">
+            <FaLock className="text-pink-600 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16" />
+            <h2 className="text-gray-800 font-bold text-sm md:text-lg lg:text-xl">
+              Secure Online Payments
+            </h2>
+            <p className="text-gray-600 text-xs md:text-sm">
+              Shop with confidence. We ensure your transactions are encrypted
+              and protected with top-tier security standards.
+            </p>
+          </div>
+
+          {/* Nationwide Delivery */}
+          <div className="flex flex-col items-center justify-around gap-4 text-center bg-gray-100 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 px-2 py-4 rounded-md shadow-md hover:shadow-lg">
+            <FaTruck className="text-pink-600 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16" />
+            <h2 className="text-gray-800 font-bold text-sm md:text-lg lg:text-xl">
+              Nationwide Delivery
+            </h2>
+            <p className="text-gray-600 text-xs md:text-sm">
+              We deliver across Pakistan—fast, reliable, and affordable shipping
+              right to your doorstep, no matter where you live.
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* trending products */}
       <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
