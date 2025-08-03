@@ -16,6 +16,11 @@ import category_5 from "./assets/top_categories/category_5.png";
 import category_6 from "./assets/top_categories/category_6.png";
 import category_7 from "./assets/top_categories/category_7.png";
 import category_8 from "./assets/top_categories/category_8.png";
+import product_offer_1 from "./assets/product_offer/product_offer_1.png";
+
+export const dummy_product_offer = {
+  po_1: product_offer_1,
+};
 
 export const hero_assests = {
   hero1: hero_image_1,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  dummy_product_offer,
   dummy_products_data,
   hero_assests,
   top_categories,
@@ -11,7 +12,6 @@ import {
   FaGreaterThan,
   FaHeadset,
   FaUndoAlt,
-  FaBolt,
   FaLock,
   FaTruck,
 } from "react-icons/fa";
@@ -445,8 +445,30 @@ const Home = () => {
         </div>
       </div>
 
-      {/* product banner */}
-      <div>banner</div>
+      {/* product offer banner */}
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-around text-gray-100 py-4 md:py-6 px-4 sm:px-6 md:px-20 lg:px-24 mx-6 sm:mx-8 md:mx-16 lg:mx-44 rounded-md bg-gray-800 shadow-lg">
+        {/* left */}
+        <div className="flex flex-col items-center md:items-start gap-2 md:gap-3 lg:gap-4 min-w-96">
+          <h2 className="text-xs md:text-sm lg:text-xl">
+            Best Deal Online on Smart Watches
+          </h2>
+          <h1 className="text-gray-200 text-xl md:text-2xl lg:text-5xl">
+            SMART WEARABLE
+          </h1>
+          <h2 className="text-xs md:text-sm lg:text-[18px]">Upto 80% OFF</h2>
+          <Link
+            to="/products"
+            className="mt-2 bg-pink-500 hover:bg-pink-600 max-w-28 w-full  text-center px-4 py-2 text-gray-100 text-[13px] transition duration-200 rounded-md items-center"
+          >
+            Shop Now
+          </Link>
+        </div>
+
+        {/* right */}
+        <div className="flex items-center justify-center text-center">
+          <img src={dummy_product_offer.po_1} alt="Best Smartwatch" />
+        </div>
+      </div>
 
       {/* most selling products */}
       <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
