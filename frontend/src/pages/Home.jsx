@@ -471,7 +471,7 @@ const Home = () => {
       </div>
 
       {/* most selling products */}
-      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
+      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 mt-2 mb-6">
         <div className="flex flex-row items-center justify-between mb-10">
           <div className="flex items-center justify-between gap-2">
             <span className="text-pink-500 font-extrabold text-lg">—</span>
