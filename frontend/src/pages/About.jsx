@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div className="flex flex-col gap-8 px-6 sm:px-8 md:px-16 lg:px-24 py-2 sm:py-3 md:py-8">
-      {/* Know about our business */}
+      {/* first section */}
       <div className="flex flex-col md:flex-row gap-8 md:gap-4 lg:gap-2 items-center justify-around">
         {/* left/top */}
         <div className="flex flex-col justify-between gap-3 xl:gap-5 items-center md:items-start lg:w-[500px] xl:w-[600px]">
@@ -37,7 +37,9 @@ const About = () => {
         />
       </div>
 
-      {/* our features */}
+      <hr className="border-t-2 rounded-lg border-gray-400 mt-4" />
+
+      {/* second section */}
       <div className="flex flex-col gap-4 my-2">
         <h1 className="text-xl md:text-3xl font-bold text-gray-800 text-center">
           Our Features
