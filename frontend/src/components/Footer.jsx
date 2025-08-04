@@ -27,7 +27,7 @@ const Footer = () => {
             to="/"
             className="flex flex-col text-[20px] sm:text-[24px] md:text-[26px] font-extrabold text-gray-800 hover:text-pink-600 transition duration-300"
           >
-            <span className="tracking-tight drop-shadow-sm">BazaarKo</span>
+            <span className="tracking-tight drop-shadow-sm">MegBazaar</span>
             <span className="text-[7px] sm:text-[8px] md:text-[9px] tracking-widest text-pink-500 font-medium animate-pulse">
               APNA DIGITAL BAZAAR
             </span>
@@ -37,7 +37,7 @@ const Footer = () => {
           <p className="text-justify text-gray-700 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px]">
             Shop top-quality fashion, electronics, home essentials, and more —
             all in one place. Enjoy secure payments, fast delivery, and
-            unbeatable deals with BazaarKo.
+            unbeatable deals with MegBazaar.
           </p>
 
           {/* social media links */}
@@ -166,7 +166,7 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         {/* rights information */}
         <p className="text-gray-700 text-sm">
-          BazaarKo.com &copy; {new Date().getFullYear()}. All rights reserved.
+          MegBazaar.com &copy; {new Date().getFullYear()}. All rights reserved.
         </p>
 
         {/* developer information */}

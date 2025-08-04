@@ -50,13 +50,13 @@ const Home = () => {
             Everything You Need, All in One Place
           </p>
           <h1 className="text-[28px] sm:text-[30px] md:text-[32px] lg:text-[44px] font-bold text-gray-800 text-center sm:text-start">
-            BazaarKo - Har Cheez, Ek Jagah!
+            MegBazaar - Har Cheez, Ek Jagah!
           </h1>
           <p className="text-[12px] sm:text-[13px] md:text-[14px] text-gray-500 text-center sm:text-justify">
             Explore thousands of premium products across fashion, electronics,
             home essentials, beauty, and more — all curated to elevate your
             everyday life. Shop smart, shop fast, and enjoy doorstep delivery,
-            secure payments, and unbeatable deals — only at BazaarKo.
+            secure payments, and unbeatable deals — only at MegBazaar.
           </p>
           <Link
             to="/products"
@@ -298,12 +298,12 @@ const Home = () => {
         </div>
       </div>
 
-      {/* What bazaarko offers */}
+      {/* What MegBazaar offers */}
       <div className="flex flex-col gap-4 px-6 sm:px-8 md:px-16 lg:px-24 my-2">
         <div className="flex items-center justify-start gap-2">
           <span className="text-pink-500 font-extrabold text-lg">—</span>
           <h1 className="text-xl md:text-3xl font-bold text-gray-800">
-            What <span className="text-pink-500">BazaarKo</span> Offers!
+            What <span className="text-pink-500">MegBazaar</span> Offers!
           </h1>
         </div>
 

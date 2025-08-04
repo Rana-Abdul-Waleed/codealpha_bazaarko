@@ -39,7 +39,7 @@ const Header = () => {
           className="flex flex-col items-center text-[20px] sm:text-[24px] md:text-[26px] font-extrabold text-gray-800 hover:text-pink-600 transition duration-300"
           onClick={() => setActiveTab("home")}
         >
-          <span className="tracking-tight drop-shadow-sm">BazaarKo</span>
+          <span className="tracking-tight drop-shadow-sm">MegBazaar</span>
           <span className="text-[7px] sm:text-[8px] md:text-[9px] tracking-widest text-pink-500 font-medium animate-pulse">
             APNA DIGITAL BAZAAR
           </span>
