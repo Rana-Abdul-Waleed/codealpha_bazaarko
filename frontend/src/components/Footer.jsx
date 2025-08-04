@@ -21,7 +21,7 @@ const Footer = () => {
       {/* first div */}
       <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-8">
         {/* left/top div */}
-        <div className="flex flex-col w-full md:max-w-60 lg:max-w-72 xl:max-w-96 gap-4 md:gap-5 lg:gap-7">
+        <div className="flex flex-col w-full md:w-60 lg:w-64 xl:w-72 gap-4 md:gap-5 lg:gap-7">
           {/* Website Logo/Name */}
           <Link
             to="/"
@@ -87,16 +87,16 @@ const Footer = () => {
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               Company
             </h1>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               About
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Features
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Work
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Career
             </Link>
           </div>
@@ -106,16 +106,16 @@ const Footer = () => {
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               Help
             </h1>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Customer Support
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Delivery Details
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Terms & Conditions
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Privacy Policy
             </Link>
           </div>
@@ -125,16 +125,16 @@ const Footer = () => {
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               FAQ
             </h1>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Account
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Manage Deliveries
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Orders
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Payments
             </Link>
           </div>
@@ -144,16 +144,16 @@ const Footer = () => {
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               Resources
             </h1>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Free eBooks
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Development Tutorial
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               How to - Blog
             </Link>
-            <Link className="text-[14px] md:text-[15px] lg:text-[16px] text-gray-700 hover:text-pink-700 hover:underline">
+            <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Youtube Playlist
             </Link>
           </div>
