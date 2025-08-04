@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import About from "./pages/About.jsx";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/about-us" element={<About />} />
       </Routes>
       <Footer />
     </BrowserRouter>
