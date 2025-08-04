@@ -22,7 +22,7 @@ const About = () => {
             making your shopping experience seamless, secure, and satisfying.
           </p>
           <Link
-            to="/contact-us"
+            to="/contact"
             className="mt-2 lg:mt-0 bg-pink-500 hover:bg-pink-600 max-w-28 w-full  text-center px-4 py-2 text-white text-[13px] transition duration-200 rounded-md items-center"
           >
             Contact us
