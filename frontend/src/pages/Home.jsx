@@ -15,6 +15,7 @@ import {
   FaLock,
   FaTruck,
 } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const heroImages = Object.values(hero_assests);
@@ -36,6 +37,7 @@ const Home = () => {
     } else {
       setLikedProductIds([...likedProductIds, id]);
       setAnimateId(id);
+      toast.success("You Liked This Product 🤍");
       setTimeout(() => setAnimateId(null), 500); // Reset animation after 500ms
     }
   };
