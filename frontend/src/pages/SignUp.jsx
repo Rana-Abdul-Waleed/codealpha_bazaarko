@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -46,65 +47,84 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center gap-6 mt-24 py-4 max-w-lg mx-auto bg-[#f2f2f2] rounded-lg shadow-md">
-        <h1 className="text-3xl text-pink-500 font-semibold mt-2">Sign Up</h1>
+    <div className="px-3 pb-12">
+      <div className="flex flex-col items-center justify-center gap-6 mt-24 py-4 max-w-lg mx-auto bg-gray-200 rounded-md shadow-lg">
+        <h1 className="text-3xl text-gray-800 font-bold mt-1">Register</h1>
+        <p className="px-2 sm:px-8 text-center text-gray-500 text-[14px]">
+          Create your free account in seconds. Join MegBazaar and start shopping
+          smarter today!
+        </p>
         <form
-          className="flex flex-col gap-4 w-full pt-4 px-10"
+          className="flex flex-col gap-4 w-full pt-2 px-2 sm:px-8"
           onSubmit={handleSubmit}
         >
-          <input
-            type="text"
-            placeholder="Username"
-            className="rounded-sm py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
-            id="username"
-            name="username"
-            required
-            onChange={handleChange}
-            disabled={loading}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="rounded-sm py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
-            id="email"
-            name="email"
-            required
-            onChange={handleChange}
-            disabled={loading}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="rounded-sm py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
-            id="password"
-            name="password"
-            required
-            onChange={handleChange}
-            disabled={loading}
-          />
+          {/* Username */}
+          <div className="relative">
+            <FaUser className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+            <input
+              type="text"
+              placeholder="Username"
+              className="w-full pl-10 rounded-md py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
+              id="username"
+              name="username"
+              required
+              onChange={handleChange}
+              disabled={loading}
+            />
+          </div>
+
+          {/* Email */}
+          <div className="relative">
+            <FaEnvelope className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+            <input
+              type="email"
+              placeholder="Email"
+              className="w-full pl-10 rounded-md py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
+              id="email"
+              name="email"
+              required
+              onChange={handleChange}
+              disabled={loading}
+            />
+          </div>
+
+          {/* Password */}
+          <div className="relative">
+            <FaLock className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+            <input
+              type="password"
+              placeholder="Password"
+              className="w-full pl-10 rounded-md py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
+              id="password"
+              name="password"
+              required
+              onChange={handleChange}
+              disabled={loading}
+            />
+          </div>
+
           <div className="flex flex-col">
             <button
-              className="bg-pink-500 py-2 text-white rounded-sm hover:bg-pink-600"
+              className="bg-pink-500 py-2 text-white rounded-md hover:bg-pink-600 transition duration-200"
               disabled={loading}
             >
-              {loading ? "Loading..." : "Sign up"}
+              {loading ? "Loading..." : "Create account"}
             </button>
           </div>
         </form>
-        <div className="text-gray-500">
+        <div className="text-gray-500 text-[15px]">
           Already have an account?{" "}
           <Link
             to="/signin"
-            className="text-pink-500 hover:text-pink-600 cursor-pointer hover:underline"
+            className="text-pink-500 hover:text-pink-600 cursor-pointer hover:underline transition duration-200"
           >
-            Sign in
+            Login
           </Link>
         </div>
       </div>
-      <div className="max-w-lg mx-auto mt-2 mb-14 py-2 px-2 text-red-500">
+      {/* <div className="max-w-lg mx-auto mt-2 mb-14 py-2 px-2 text-red-500">
         {error}
-      </div>
+      </div> */}
     </div>
   );
 };
