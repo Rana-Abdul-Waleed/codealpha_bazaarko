@@ -14,6 +14,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
@@ -34,14 +35,34 @@ const Footer = () => {
           </Link>
 
           {/* Website description */}
-          <p className="text-justify text-gray-700 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px]">
+          <motion.p
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.2,
+            }}
+            className="text-justify text-gray-700 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px]"
+          >
             Shop top-quality fashion, electronics, home essentials, and more —
             all in one place. Enjoy secure payments, fast delivery, and
             unbeatable deals with MegBazaar.
-          </p>
+          </motion.p>
 
           {/* social media links */}
-          <div className="flex gap-4 justify-start">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.4,
+            }}
+            className="flex gap-4 justify-start"
+          >
             <a
               href="https://www.facebook.com"
               target="_blank"
@@ -77,13 +98,23 @@ const Footer = () => {
             >
               <FaGithub />
             </a>
-          </div>
+          </motion.div>
         </div>
 
         {/* right/bottom div */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 xl:gap-10">
           {/* 1st section */}
-          <div className="flex flex-col justify-between text-center gap-1">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.2,
+            }}
+            className="flex flex-col justify-between text-center gap-1"
+          >
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               Company
             </h1>
@@ -99,10 +130,20 @@ const Footer = () => {
             <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Career
             </Link>
-          </div>
+          </motion.div>
 
           {/* 2nd section */}
-          <div className="flex flex-col justify-between text-center gap-1">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.3,
+            }}
+            className="flex flex-col justify-between text-center gap-1"
+          >
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               Help
             </h1>
@@ -118,10 +159,20 @@ const Footer = () => {
             <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Privacy Policy
             </Link>
-          </div>
+          </motion.div>
 
           {/* 3rd section */}
-          <div className="flex flex-col justify-between text-center gap-1">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.4,
+            }}
+            className="flex flex-col justify-between text-center gap-1"
+          >
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               FAQ
             </h1>
@@ -137,10 +188,20 @@ const Footer = () => {
             <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Payments
             </Link>
-          </div>
+          </motion.div>
 
           {/* 4th section */}
-          <div className="flex flex-col justify-between text-center gap-1">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.5,
+            }}
+            className="flex flex-col justify-between text-center gap-1"
+          >
             <h1 className="mb-2 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold text-gray-800">
               Resources
             </h1>
@@ -156,14 +217,24 @@ const Footer = () => {
             <Link className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-gray-700 hover:text-pink-700 hover:underline">
               Youtube Playlist
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       <hr className="border-t-2 rounded-lg border-pink-400 mt-10 mb-4" />
 
       {/* second div */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 15,
+          delay: 0.2,
+        }}
+        className="flex flex-col md:flex-row items-center justify-between gap-4"
+      >
         {/* rights information */}
         <p className="text-gray-700 text-sm">
           MegBazaar.com &copy; {new Date().getFullYear()}. All rights reserved.
@@ -179,7 +250,7 @@ const Footer = () => {
             <FaWhatsapp className="text-green-700" /> +923013933835
           </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -16,6 +16,7 @@ import {
   FaTruck,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const heroImages = Object.values(hero_assests);
@@ -48,40 +49,101 @@ const Home = () => {
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8 items-center justify-around bg-gray-200 min-h-72 py-8 px-4 sm:px-6 md:px-12 lg:px-20 mx-4 md:mx-6 lg:mx-8 mt-0 md:mt-6 lg:mt-8 rounded-md">
         {/* left */}
         <div className="max-w-[350px] sm:max-w-[400px] md:max-w-[350px] lg:max-w-[540px] flex flex-col gap-3 items-center sm:items-start">
-          <p className="text-pink-600 text-[12px] sm:text-[13px] md:text-[14px] italic">
+          <motion.p
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.2,
+            }}
+            className="text-pink-600 text-[12px] sm:text-[13px] md:text-[14px] italic"
+          >
             Everything You Need, All in One Place
-          </p>
-          <h1 className="text-[28px] sm:text-[30px] md:text-[32px] lg:text-[44px] font-bold text-gray-800 text-center sm:text-start">
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.3,
+            }}
+            className="text-[28px] sm:text-[30px] md:text-[32px] lg:text-[44px] font-bold text-gray-800 text-center sm:text-start"
+          >
             MegBazaar - Har Cheez, Ek Jagah!
-          </h1>
-          <p className="text-[12px] sm:text-[13px] md:text-[14px] text-gray-500 text-center sm:text-justify">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.4,
+            }}
+            className="text-[12px] sm:text-[13px] md:text-[14px] text-gray-500 text-center sm:text-justify"
+          >
             Explore thousands of premium products across fashion, electronics,
             home essentials, beauty, and more — all curated to elevate your
             everyday life. Shop smart, shop fast, and enjoy doorstep delivery,
             secure payments, and unbeatable deals — only at MegBazaar.
-          </p>
-          <Link
-            to="/products"
-            className="mt-2 bg-pink-500 hover:bg-pink-600 max-w-28 w-full  text-center px-4 py-2 text-white text-[13px] transition duration-200 rounded-md items-center"
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.8,
+            }}
+            className="mt-2 max-w-28 w-full flex items-center text-center"
           >
-            Shop Now
-          </Link>
+            <Link
+              to="/products"
+              className="bg-pink-500 hover:bg-pink-600 text-center px-4 py-2 text-white text-[13px] transition duration-200 rounded-md items-center"
+            >
+              Shop Now
+            </Link>
+          </motion.div>
         </div>
 
-        {/* right */}
         {/* right (slider) */}
-        <div className="flex flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.3,
+          }}
+          className="flex flex-col items-center"
+        >
           <img
             src={heroImages[currentImageIndex]}
             alt="Comfortable sofa"
             className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] drop-shadow-[0_30px_20px_rgba(0,0,0,0.25)] transition duration-800 ease-in-out"
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* top categories */}
-      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
-        <div className="flex flex-row items-center justify-between mb-10">
+      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.2,
+          }}
+          className="flex flex-row items-center justify-between mb-10"
+        >
           <div className="flex items-center justify-between gap-2">
             <span className="text-pink-500 font-extrabold text-lg">—</span>
             <h1 className="text-xl md:text-3xl font-bold text-gray-800">
@@ -95,9 +157,19 @@ const Home = () => {
             <p className="text-sm md:text-lg">View All</p>
             <FaGreaterThan className="text-xs md:text-sm" />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.4,
+          }}
+          className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-4"
+        >
           {top_categories.map((item) => (
             <div
               key={item.c_id}
@@ -123,12 +195,22 @@ const Home = () => {
               </p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* featured products */}
-      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
-        <div className="flex flex-row items-center justify-between mb-10">
+      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.2,
+          }}
+          className="flex flex-row items-center justify-between mb-10"
+        >
           <div className="flex items-center justify-between gap-2">
             <span className="text-pink-500 font-extrabold text-lg">—</span>
             <h1 className="text-xl md:text-3xl font-bold text-gray-800">
@@ -142,9 +224,19 @@ const Home = () => {
             <p className="text-sm md:text-lg">View All</p>
             <FaGreaterThan className="text-xs md:text-sm" />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.4,
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
           {dummy_products_data.map((item) => (
             <div
               key={item.p_id}
@@ -210,12 +302,22 @@ const Home = () => {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* latest products */}
-      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
-        <div className="flex flex-row items-center justify-between mb-10">
+      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.2,
+          }}
+          className="flex flex-row items-center justify-between mb-10"
+        >
           <div className="flex items-center justify-between gap-2">
             <span className="text-pink-500 font-extrabold text-lg">—</span>
             <h1 className="text-xl md:text-3xl font-bold text-gray-800">
@@ -229,9 +331,19 @@ const Home = () => {
             <p className="text-sm md:text-lg">View All</p>
             <FaGreaterThan className="text-xs md:text-sm" />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.4,
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
           {dummy_products_data.map((item) => (
             <div
               key={item.p_id}
@@ -297,19 +409,39 @@ const Home = () => {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* What MegBazaar offers */}
-      <div className="flex flex-col gap-4 px-6 sm:px-8 md:px-16 lg:px-24 my-2">
-        <div className="flex items-center justify-start gap-2">
+      <div className="flex flex-col gap-4 px-6 sm:px-8 md:px-16 lg:px-24 mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.2,
+          }}
+          className="flex items-center justify-start gap-2"
+        >
           <span className="text-pink-500 font-extrabold text-lg">—</span>
           <h1 className="text-xl md:text-3xl font-bold text-gray-800">
             What <span className="text-pink-500">MegBazaar</span> Offers!
           </h1>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.4,
+          }}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4"
+        >
           {/* 24/7 Customer Support */}
           <div className="flex flex-col items-center justify-around gap-4 text-center bg-gray-100 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 px-2 py-4 rounded-md shadow-md hover:shadow-lg">
             <FaHeadset className="text-pink-600 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16" />
@@ -357,12 +489,22 @@ const Home = () => {
               right to your doorstep, no matter where you live.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* trending products */}
-      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 my-2">
-        <div className="flex flex-row items-center justify-between mb-10">
+      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.2,
+          }}
+          className="flex flex-row items-center justify-between mb-10"
+        >
           <div className="flex items-center justify-between gap-2">
             <span className="text-pink-500 font-extrabold text-lg">—</span>
             <h1 className="text-xl md:text-3xl font-bold text-gray-800">
@@ -376,9 +518,19 @@ const Home = () => {
             <p className="text-sm md:text-lg">View All</p>
             <FaGreaterThan className="text-xs md:text-sm" />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.4,
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
           {dummy_products_data.map((item) => (
             <div
               key={item.p_id}
@@ -444,37 +596,101 @@ const Home = () => {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* product offer banner */}
-      <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-around text-gray-100 py-4 md:py-6 px-4 sm:px-6 md:px-20 lg:px-24 mx-6 sm:mx-8 md:mx-16 lg:mx-44 rounded-md bg-gray-800 shadow-lg">
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-around text-gray-100 py-4 md:py-6 px-4 sm:px-6 md:px-20 lg:px-24 mx-6 sm:mx-8 md:mx-16 lg:mx-44 rounded-md bg-gray-800 shadow-lg mt-16">
         {/* left */}
         <div className="flex flex-col items-center md:items-start gap-2 md:gap-3 lg:gap-4 min-w-96">
-          <h2 className="text-xs md:text-sm lg:text-xl">
-            Best Deal Online on Smart Watches
-          </h2>
-          <h1 className="text-gray-200 text-xl md:text-2xl lg:text-5xl">
-            SMART WEARABLE
-          </h1>
-          <h2 className="text-xs md:text-sm lg:text-[18px]">Upto 80% OFF</h2>
-          <Link
-            to="/products"
-            className="mt-2 bg-pink-500 hover:bg-pink-600 max-w-28 w-full  text-center px-4 py-2 text-gray-100 text-[13px] transition duration-200 rounded-md items-center"
+          <motion.h2
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.2,
+            }}
+            className="text-xs md:text-sm lg:text-xl"
           >
-            Shop Now
-          </Link>
+            Best Deal Online on Smart Watches
+          </motion.h2>
+          <motion.h1
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.5,
+            }}
+            className="text-gray-200 text-xl md:text-2xl lg:text-5xl"
+          >
+            SMART WEARABLE
+          </motion.h1>
+          <motion.h2
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.6,
+            }}
+            className="text-xs md:text-sm lg:text-[18px]"
+          >
+            Upto 80% OFF
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.7,
+            }}
+            className="mt-2 max-w-28 w-full flex items-center text-center"
+          >
+            <Link
+              to="/products"
+              className="bg-pink-500 hover:bg-pink-600 text-center px-4 py-2 text-white text-[13px] transition duration-200 rounded-md items-center"
+            >
+              Shop Now
+            </Link>
+          </motion.div>
         </div>
 
         {/* right */}
-        <div className="flex items-center justify-center text-center">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.5,
+          }}
+          className="flex items-center justify-center text-center"
+        >
           <img src={dummy_product_offer.po_1} alt="Best Smartwatch" />
-        </div>
+        </motion.div>
       </div>
 
       {/* most selling products */}
-      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 mt-2 mb-6">
-        <div className="flex flex-row items-center justify-between mb-10">
+      <div className="flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 mt-16 mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.2,
+          }}
+          className="flex flex-row items-center justify-between mb-10"
+        >
           <div className="flex items-center justify-between gap-2">
             <span className="text-pink-500 font-extrabold text-lg">—</span>
             <h1 className="text-xl md:text-3xl font-bold text-gray-800">
@@ -488,9 +704,19 @@ const Home = () => {
             <p className="text-sm md:text-lg">View All</p>
             <FaGreaterThan className="text-xs md:text-sm" />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: 0.4,
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
           {dummy_products_data.map((item) => (
             <div
               key={item.p_id}
@@ -556,7 +782,7 @@ const Home = () => {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
