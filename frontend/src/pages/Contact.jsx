@@ -1,5 +1,6 @@
 import React from "react";
 import contact_image_1 from "../assets/contact_us/contact_image_1.jpg";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const handleSubmit = async (event) => {
@@ -21,7 +22,7 @@ const Contact = () => {
     }).then((res) => res.json());
 
     if (res.success) {
-      console.log("Success", res);
+      toast.success("Mail sent successfully!");
     }
   };
 

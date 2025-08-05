@@ -7,6 +7,7 @@ import {
 } from "../redux/user/userSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
@@ -22,6 +23,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
+      toast.error("Please fill out all the fields!");
       return dispatch(signInFailure("Please fill out all the fields!"));
     }
 
@@ -34,70 +36,23 @@ const SignIn = () => {
       });
       const data = await res.json();
       if (data.success === false) {
+        toast.error(data.message || "Sign in failed!");
         dispatch(signInFailure(data.message));
+        return;
       }
       if (res.ok) {
         dispatch(signInSuccess(data));
+        toast.success("Logged in successfully!");
         navigate("/");
       }
       setSubmitForm(true);
     } catch (error) {
+      toast.error(error.message || "Something went wrong!");
       dispatch(signInFailure(error.message));
     }
   };
 
   return (
-    // <div>
-    //   <div className="flex flex-col items-center justify-center gap-6 mt-24 py-4 max-w-lg mx-auto bg-[#f2f2f2] rounded-lg shadow-md">
-    //     <h1 className="text-3xl text-pink-500 font-semibold mt-2">Sign In</h1>
-    //     <form
-    //       className="flex flex-col gap-4 w-full pt-4 px-10"
-    //       onSubmit={handleSubmit}
-    //     >
-    //       <input
-    //         type="email"
-    //         placeholder="Email"
-    //         className="rounded-sm py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
-    //         id="email"
-    //         name="email"
-    //         required
-    //         onChange={handleChange}
-    //         disabled={loading}
-    //       />
-    //       <input
-    //         type="password"
-    //         placeholder="Password"
-    //         className="rounded-sm py-2 px-3 border-2 border-gray-200 outline-none text-gray-500"
-    //         id="password"
-    //         name="password"
-    //         required
-    //         onChange={handleChange}
-    //         disabled={loading}
-    //       />
-    //       <div className="flex flex-col">
-    //         <button
-    //           className="bg-pink-500 py-2 text-white rounded-sm hover:bg-pink-600"
-    //           disabled={loading}
-    //         >
-    //           {loading ? "Loading..." : "Sign in"}
-    //         </button>
-    //       </div>
-    //     </form>
-    //     <div className="text-gray-500">
-    //       Don't have an account?{" "}
-    //       <Link
-    //         to="/signup"
-    //         className="text-pink-500 hover:text-pink-600 cursor-pointer hover:underline"
-    //       >
-    //         Sign up
-    //       </Link>
-    //     </div>
-    //   </div>
-    //   <div className="max-w-lg mx-auto mt-2 mb-14 py-2 px-2 text-red-500">
-    //     {submitForm && errorMessage}
-    //   </div>
-    // </div>
-
     <div className="px-3 pb-12">
       <div className="flex flex-col items-center justify-center gap-6 mt-24 py-4 max-w-lg mx-auto bg-gray-200 rounded-md shadow-lg">
         <h1 className="text-3xl text-gray-800 font-bold mt-1">Login</h1>
@@ -158,9 +113,6 @@ const SignIn = () => {
           </Link>
         </div>
       </div>
-      {/* <div className="max-w-lg mx-auto mt-2 mb-14 py-2 px-2 text-red-500">
-            {error}
-          </div> */}
     </div>
   );
 };

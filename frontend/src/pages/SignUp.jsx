@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -12,14 +13,13 @@ const SignUp = () => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
 
-  // console.log(formData);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(false);
     setError(null);
     if (!formData.username || !formData.email || !formData.password) {
-      return setError("Please fill out all the fields!");
+      toast.error("Please fill out all the fields!");
+      return;
     }
 
     try {
@@ -32,16 +32,17 @@ const SignUp = () => {
       });
       const data = await res.json();
       if (data.success === false) {
-        setError(data.message);
+        toast.error(data.message || "Something went wrong!");
         setLoading(false);
+        return;
       }
-      // console.log(data);
       setLoading(false);
       if (res.ok) {
+        toast.success("Account created successfully!");
         navigate("/signin");
       }
     } catch (error) {
-      setError(error.message);
+      toast.error(error.message || "Something went wrong!");
       setLoading(false);
     }
   };
@@ -122,9 +123,6 @@ const SignUp = () => {
           </Link>
         </div>
       </div>
-      {/* <div className="max-w-lg mx-auto mt-2 mb-14 py-2 px-2 text-red-500">
-        {error}
-      </div> */}
     </div>
   );
 };
