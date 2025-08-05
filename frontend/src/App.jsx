@@ -9,6 +9,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
+import SlideToTopButton from "./components/SlideToTopButton.jsx";
 
 const App = () => {
   return (
@@ -23,6 +24,10 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
       </Routes>
 
+      <SlideToTopButton />
+
+      <Footer />
+
       {/* Toast container to show notifications */}
       <ToastContainer
         position="top-right"
@@ -35,8 +40,6 @@ const App = () => {
         theme="colored"
         style={{ marginTop: "55px" }}
       />
-
-      <Footer />
     </BrowserRouter>
   );
 };
