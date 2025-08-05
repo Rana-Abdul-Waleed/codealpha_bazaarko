@@ -144,3 +144,15 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
+
+// signout api
+export const signout = (req, res) => {
+  res
+    .clearCookie("access_token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // only in production over HTTPS
+      sameSite: "strict",
+    })
+    .status(200)
+    .json({ message: "User has been logged out successfully." });
+};

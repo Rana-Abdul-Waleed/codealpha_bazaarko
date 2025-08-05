@@ -7,7 +7,9 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { signOutSuccess } from "../redux/user/userSlice.js";
 
 const Header = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -15,6 +17,7 @@ const Header = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
+  const dispatch = useDispatch();
   const dropdownRef = useRef(null);
   const cartCount = 2;
 
@@ -29,6 +32,27 @@ const Header = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch("/backend/auth/signout", {
+        method: "POST",
+        credentials: "include", // important to send cookies
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        dispatch(signOutSuccess());
+        setShowProfileDropdown(false);
+        toast.success(data.message || "Logged out successfully.");
+      } else {
+        toast.error(data.message || "Failed to log out.");
+      }
+    } catch (error) {
+      toast.error(error.message || "Something went wrong!");
+    }
+  };
 
   return (
     <>
@@ -150,8 +174,11 @@ const Header = () => {
                     </Link>
                     <hr />
                   </>
-                  <button className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
-                    Sign Out
+                  <button
+                    onClick={handleSignOut}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
+                  >
+                    Log Out
                   </button>
                 </div>
               )}
