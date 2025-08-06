@@ -113,8 +113,8 @@ const Home = () => {
 
         {/* right (slider) */}
         <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{
             type: "spring",
             stiffness: 100,
@@ -617,8 +617,8 @@ const Home = () => {
             Best Deal Online on Smart Watches
           </motion.h2>
           <motion.h1
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{
               type: "spring",
               stiffness: 100,
@@ -664,8 +664,8 @@ const Home = () => {
 
         {/* right */}
         <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{
             type: "spring",
             stiffness: 100,

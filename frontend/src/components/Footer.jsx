@@ -105,8 +105,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 xl:gap-10">
           {/* 1st section */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{
               type: "spring",
               stiffness: 100,
@@ -134,8 +134,8 @@ const Footer = () => {
 
           {/* 2nd section */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{
               type: "spring",
               stiffness: 100,
@@ -163,8 +163,8 @@ const Footer = () => {
 
           {/* 3rd section */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{
               type: "spring",
               stiffness: 100,
@@ -192,8 +192,8 @@ const Footer = () => {
 
           {/* 4th section */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{
               type: "spring",
               stiffness: 100,
@@ -224,17 +224,7 @@ const Footer = () => {
       <hr className="border-t-2 rounded-lg border-pink-400 mt-10 mb-4" />
 
       {/* second div */}
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
-          delay: 0.2,
-        }}
-        className="flex flex-col md:flex-row items-center justify-between gap-4"
-      >
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         {/* rights information */}
         <p className="text-gray-700 text-sm">
           MegBazaar.com &copy; {new Date().getFullYear()}. All rights reserved.
@@ -250,7 +240,7 @@ const Footer = () => {
             <FaWhatsapp className="text-green-700" /> +923013933835
           </p>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };
