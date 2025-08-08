@@ -1,1 +1,1 @@
-BAZAARKO is a Full Stack Web Application developed using MERN Stack and Tailwind CSS. It is an e-commerce website which has different features like products listings, product details, cart functionality, user authentication, order processing and more.
+MegBazaar formerly BazaarKo is a Full Stack Web Application developed using MERN Stack and Tailwind CSS. It is an e-commerce website which has different features like products listings, product details, cart functionality, user authentication, order processing and more.
