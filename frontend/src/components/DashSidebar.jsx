@@ -18,7 +18,6 @@ const DashSidebar = () => {
   const [tab, setTab] = useState("");
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -49,7 +48,7 @@ const DashSidebar = () => {
   };
 
   return (
-    <div className="min-w-56 min-h-28 md:min-h-screen md:border-r-2 border-b-2 border-gray-300 text-gray-700 py-4 px-3 flex flex-col gap-4">
+    <div className="bg-gray-100 min-w-56 min-h-28 md:h-full md:border-r-2 border-b-2 md:border-b-0 border-gray-300 text-gray-700 py-4 px-3 flex flex-col gap-4">
       {/* Profile */}
       <Link
         to={"/dashboard?tab=profile"}
