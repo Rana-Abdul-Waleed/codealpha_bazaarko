@@ -135,49 +135,30 @@ const Header = () => {
                 <div className="absolute -right-10 md:-right-12 mt-3 md:mt-4 w-36 md:w-48 bg-gray-100 border border-gray-200 rounded-md shadow-lg text-sm z-50 overflow-hidden transition-all duration-500">
                   {currentUser.user.isAdmin ? (
                     <>
-                      <div className="px-4 py-2 text-gray-600 font-semibold">
+                      <div className="px-4 py-2 text-gray-600 text-[16px] font-semibold">
                         Admin
                       </div>
                       <hr />
                     </>
                   ) : (
                     <>
-                      <div className="px-4 py-2 text-gray-600 font-semibold">
+                      <div className="px-4 py-2 text-gray-600 text-[16px] font-semibold">
                         User
                       </div>
                       <hr />
                     </>
                   )}
 
-                  {currentUser.user.isAdmin && (
-                    <>
-                      <Link
-                        to="/dashboard?tab=profile"
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                      >
-                        Dashboard
-                      </Link>
-                      <hr />
-                    </>
-                  )}
                   <>
                     <Link
-                      to="/my-orders"
+                      to="/dashboard?tab=profile"
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
                     >
-                      My Orders
+                      Dashboard
                     </Link>
                     <hr />
                   </>
-                  <>
-                    <Link
-                      to="/liked-products"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                    >
-                      Liked Products
-                    </Link>
-                    <hr />
-                  </>
+
                   <button
                     onClick={handleSignOut}
                     className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
