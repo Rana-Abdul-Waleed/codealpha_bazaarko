@@ -133,18 +133,22 @@ const Header = () => {
               </button>
               {showProfileDropdown && (
                 <div className="absolute -right-10 md:-right-12 mt-3 md:mt-4 w-36 md:w-48 bg-gray-100 border border-gray-200 rounded-md shadow-lg text-sm z-50 overflow-hidden transition-all duration-500">
-                  {currentUser.user.isAdmin && (
+                  {currentUser.user.isAdmin ? (
                     <>
                       <div className="px-4 py-2 text-gray-600 font-semibold">
                         Admin
                       </div>
                       <hr />
                     </>
+                  ) : (
+                    <>
+                      <div className="px-4 py-2 text-gray-600 font-semibold">
+                        User
+                      </div>
+                      <hr />
+                    </>
                   )}
-                  <div className="px-4 py-2 text-gray-700">
-                    {currentUser.user.username}
-                  </div>
-                  <hr />
+
                   {currentUser.user.isAdmin && (
                     <>
                       <Link

@@ -11,6 +11,12 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import SlideToTopButton from "./components/SlideToTopButton.jsx";
 import Products from "./pages/Products.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import AdminPrivateRoute from "./components/AdminPrivateRoute.jsx";
+import CreateProduct from "./pages/CreateProduct.jsx";
+import UpdateProduct from "./pages/UpdateProduct.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 const App = () => {
   return (
@@ -24,6 +30,18 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/product-details/:productId" element={<ProductDetails />} />
+
+        {/* Private Route */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
+        {/* Private Route */}
+        <Route element={<AdminPrivateRoute />}>
+          <Route path="/create-post" element={<CreateProduct />} />
+          <Route path="/update-post/:postId" element={<UpdateProduct />} />
+        </Route>
       </Routes>
 
       <SlideToTopButton />
