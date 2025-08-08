@@ -10,6 +10,7 @@ import Footer from "./components/Footer.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import SlideToTopButton from "./components/SlideToTopButton.jsx";
+import Products from "./pages/Products.jsx";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
 
       <SlideToTopButton />

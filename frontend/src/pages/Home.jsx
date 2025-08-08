@@ -38,7 +38,7 @@ const Home = () => {
     } else {
       setLikedProductIds([...likedProductIds, id]);
       setAnimateId(id);
-      toast.success("You Liked This Product 🤍");
+      toast.success("Added to Liked Products");
       setTimeout(() => setAnimateId(null), 500); // Reset animation after 500ms
     }
   };
