@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-100 flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 py-6">
+    <div className="bg-gray-100 flex flex-col px-6 sm:px-8 md:px-16 lg:px-24 py-6 border-t-4">
       {/* first div */}
       <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-8">
         {/* left/top div */}

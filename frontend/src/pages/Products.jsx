@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { dummy_products_data, top_categories_2 } from "../assets.js";
+import { dummy_products_data, top_categories } from "../assets.js";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
@@ -55,7 +55,7 @@ const Products = () => {
           }}
           className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-4"
         >
-          {top_categories_2.map((item) => (
+          {top_categories.map((item) => (
             <div
               key={item.c_id}
               className="flex flex-col items-center justify-center gap-6 group cursor-pointer"
@@ -99,7 +99,7 @@ const Products = () => {
           <div className="flex items-center justify-between gap-2">
             <span className="text-pink-500 font-extrabold text-lg">—</span>
             <h1 className="text-xl md:text-3xl font-bold text-gray-800">
-              Featured Products
+              All Products
             </h1>
           </div>
         </motion.div>
