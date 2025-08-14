@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import {
+  addProductStart,
+  addProductSuccess,
+  addProductFailure,
+} from "../redux/product/productSlice.js";
 
 const categoryFields = {
   mobile: [
@@ -61,6 +66,9 @@ const categoryFields = {
 
 const DashAddProduct = () => {
   const { currentUser } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
   const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
 
@@ -87,6 +95,7 @@ const DashAddProduct = () => {
     images.forEach((img) => form.append("product_images", img));
 
     try {
+      dispatch(addProductStart());
       const res = await fetch("/backend/product/addProduct", {
         method: "POST",
         credentials: "include",
@@ -95,14 +104,17 @@ const DashAddProduct = () => {
 
       const data = await res.json();
       if (res.ok) {
+        dispatch(addProductSuccess(data.product));
         toast.success(data.message);
         e.target.reset(); // clear form
         setImages([]);
         setCategory("");
       } else {
+        dispatch(addProductFailure(data.message));
         toast.error(data.message);
       }
     } catch (err) {
+      dispatch(addProductFailure("Something went wrong!"));
       toast.error("Something went wrong!");
     }
   };
