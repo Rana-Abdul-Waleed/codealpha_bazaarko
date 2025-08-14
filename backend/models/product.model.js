@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     product_price: {
-      type: Number,
+      type: String,
       required: true,
     },
     product_images: {
@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema(
       type: String,
     },
     stock_quantity: {
-      type: Number,
+      type: String,
       default: 0,
     },
     isFeatured: {

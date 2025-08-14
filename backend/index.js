@@ -2,10 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-// import path from "path";
+import path from "path";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
+import productRoutes from "./routes/product.route.js";
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.listen(process.env.port, () => {
 // routes
 app.use("/backend/user", userRoutes);
 app.use("/backend/auth", authRoutes);
+app.use("/backend/product", productRoutes);
 
 // custom error middleware
 app.use((err, req, res, next) => {

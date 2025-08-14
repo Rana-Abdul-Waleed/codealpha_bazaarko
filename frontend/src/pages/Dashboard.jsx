@@ -7,6 +7,7 @@ import DashUsers from "../components/DashUsers.jsx";
 import DashOrders from "../components/DashOrders.jsx";
 import DashMyOrders from "../components/DashMyOrders.jsx";
 import DashLikedProducts from "../components/DashLikedProducts.jsx";
+import DashAddProduct from "../components/DashAddProduct.jsx";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -41,6 +42,9 @@ const Dashboard = () => {
 
       {/* products */}
       {tab === "products" && <DashProducts />}
+
+      {/* addProduct */}
+      {tab === "addProduct" && <DashAddProduct />}
 
       {/* orders */}
       {tab === "orders" && <DashOrders />}
