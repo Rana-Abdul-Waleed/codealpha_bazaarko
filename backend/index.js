@@ -4,11 +4,16 @@ import dotenv from "dotenv";
 import cors from "cors";
 import path from "path";
 import cookieParser from "cookie-parser";
+import { fileURLToPath } from "url";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
 
 dotenv.config();
+
+// __dirname fix for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // database connectivity
 mongoose
@@ -20,30 +25,27 @@ mongoose
     console.log(err);
   });
 
-// express app
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_ORIGIN || "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
-// run the server
-app.listen(process.env.port, () => {
-  console.log(`Server is running on port ${process.env.port}`);
-});
-
-// for file handling
-// app.use(
-//   "/uploads",
-//   express.static(path.join(process.cwd(), "backend/uploads"))
-// );
+// ✅ Serve static files from uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// Now URLs like http://localhost:5173/uploads/filename.jpg will work
 
 // routes
 app.use("/backend/user", userRoutes);
 app.use("/backend/auth", authRoutes);
 app.use("/backend/product", productRoutes);
 
-// custom error middleware
+// error middleware
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error!";
@@ -52,4 +54,9 @@ app.use((err, req, res, next) => {
     statusCode,
     message,
   });
+});
+
+// run the server
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });

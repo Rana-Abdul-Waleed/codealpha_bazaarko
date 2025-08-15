@@ -8,8 +8,11 @@ import DashOrders from "../components/DashOrders.jsx";
 import DashMyOrders from "../components/DashMyOrders.jsx";
 import DashLikedProducts from "../components/DashLikedProducts.jsx";
 import DashAddProduct from "../components/DashAddProduct.jsx";
+import { useSelector } from "react-redux";
+import DashProductDetails from "../components/DashProductDetails.jsx";
 
 const Dashboard = () => {
+  const { currentUser } = useSelector((state) => state.user);
   const location = useLocation();
   const [tab, setTab] = useState("");
 
@@ -38,16 +41,23 @@ const Dashboard = () => {
       {tab === "likedproducts" && <DashLikedProducts />}
 
       {/* users */}
-      {tab === "users" && <DashUsers />}
+      {currentUser.user.isAdmin ? tab === "users" && <DashUsers /> : ""}
 
       {/* products */}
-      {tab === "products" && <DashProducts />}
+      {currentUser.user.isAdmin ? tab === "products" && <DashProducts /> : ""}
 
-      {/* addProduct */}
-      {tab === "addProduct" && <DashAddProduct />}
+      {/* products/addProduct */}
+      {currentUser.user.isAdmin
+        ? tab === "products/addProduct" && <DashAddProduct />
+        : ""}
+
+      {/* products/productDetails/productId */}
+      {currentUser.user.isAdmin
+        ? tab === "products/productDetails/productId" && <DashProductDetails />
+        : ""}
 
       {/* orders */}
-      {tab === "orders" && <DashOrders />}
+      {currentUser.user.isAdmin ? tab === "orders" && <DashOrders /> : ""}
     </div>
   );
 };

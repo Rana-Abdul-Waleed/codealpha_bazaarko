@@ -6,6 +6,7 @@ import {
   addProductSuccess,
   addProductFailure,
 } from "../redux/product/productSlice.js";
+import { useNavigate } from "react-router-dom";
 
 const categoryFields = {
   mobile: [
@@ -15,8 +16,9 @@ const categoryFields = {
     "ram",
     "screen_size",
     "battery_capacity",
-    "camera_resolution",
+    "camera",
     "operating_system",
+    "colors",
   ],
   cosmetics: [
     "brand",
@@ -68,6 +70,7 @@ const DashAddProduct = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { loading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
@@ -109,6 +112,7 @@ const DashAddProduct = () => {
         e.target.reset(); // clear form
         setImages([]);
         setCategory("");
+        navigate("dashboard?tab=products");
       } else {
         dispatch(addProductFailure(data.message));
         toast.error(data.message);
@@ -141,6 +145,13 @@ const DashAddProduct = () => {
           type="number"
           name="product_price"
           placeholder="Product Price"
+          className="border p-2 rounded-md"
+          required
+        />
+        <input
+          type="number"
+          name="product_discounted_price"
+          placeholder="Product Discounted Price"
           className="border p-2 rounded-md"
           required
         />

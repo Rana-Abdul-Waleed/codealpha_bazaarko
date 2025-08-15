@@ -14,8 +14,8 @@ import Products from "./pages/Products.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import AdminPrivateRoute from "./components/AdminPrivateRoute.jsx";
-import CreateProduct from "./pages/CreateProduct.jsx";
-import UpdateProduct from "./pages/UpdateProduct.jsx";
+// import CreateProduct from "./pages/CreateProduct.jsx";
+// import UpdateProduct from "./pages/UpdateProduct.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
 const App = () => {
@@ -42,11 +42,11 @@ const App = () => {
 
         {/* Private Route */}
         <Route element={<AdminPrivateRoute />}>
-          <Route path="/create-product" element={<CreateProduct />} />
-          <Route
+          {/* <Route path="/create-product" element={<CreateProduct />} /> */}
+          {/* <Route
             path="/update-product/:productId"
             element={<UpdateProduct />}
-          />
+          /> */}
         </Route>
       </Routes>
 
