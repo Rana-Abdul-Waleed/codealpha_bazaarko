@@ -35,20 +35,28 @@ const DashProducts = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      {/* Heading */}
-      <h2 className="text-2xl font-bold mb-4">Add a new product</h2>
+    <div className="px-4 md:px-6 pt-4 pb-12">
+      <div className="flex flex-col items-center md:items-start justify-between gap-2">
+        {/* Heading */}
+        <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center md:text-left">
+          Add a new product
+        </h2>
 
-      {/* Add Product Button */}
-      <button
-        onClick={() => navigate("/dashboard?tab=products/addProduct")}
-        className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 transition duration-200 mb-6"
-      >
-        Add Product
-      </button>
+        {/* Add Product Button */}
+        <button
+          onClick={() => navigate("/dashboard?tab=products/addProduct")}
+          className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 transition duration-200"
+        >
+          Add Product
+        </button>
+      </div>
+
+      <hr className="border-t-2 rounded-lg border-gray-300 my-8" />
 
       {/* All Products Heading */}
-      <h2 className="text-2xl font-bold mb-4">All products</h2>
+      <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center md:text-left">
+        All products
+      </h2>
 
       {/* Products Grid */}
       {products.length > 0 ? (
@@ -73,7 +81,7 @@ const DashProducts = () => {
                 {/* Product Image */}
                 {imgSrc ? (
                   <img
-                    src={imgSrc} // <-- change here: use constructed imgSrc
+                    src={imgSrc}
                     alt={item.product_name || "Product"}
                     className="w-full h-[220px] object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
                   />

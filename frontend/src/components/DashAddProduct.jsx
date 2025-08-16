@@ -112,7 +112,7 @@ const DashAddProduct = () => {
         e.target.reset(); // clear form
         setImages([]);
         setCategory("");
-        navigate("dashboard?tab=products");
+        navigate("/dashboard?tab=products");
       } else {
         dispatch(addProductFailure(data.message));
         toast.error(data.message);
