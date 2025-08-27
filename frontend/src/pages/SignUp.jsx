@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
+import axios from "axios"; // Import axios package
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -25,25 +26,33 @@ const SignUp = () => {
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch("/backend/auth/signup", {
-        method: "POST",
+
+      // Replace fetch with axios
+      const res = await axios.post("/backend/auth/signup", formData, {
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
       });
-      const data = await res.json();
+
+      const data = res.data; // Axios stores response data in .data property
+
       if (data.success === false) {
         toast.error(data.message || "Something went wrong!");
         setLoading(false);
         return;
       }
+
       setLoading(false);
-      if (res.ok) {
+      if (res.status === 200 || res.status === 201) {
         toast.success("Account created successfully!");
         navigate("/signin");
       }
     } catch (error) {
-      toast.error(error.message || "Something went wrong!");
       setLoading(false);
+      // Axios error handling - check if error has response data
+      if (error.response && error.response.data) {
+        toast.error(error.response.data.message || "Something went wrong!");
+      } else {
+        toast.error(error.message || "Something went wrong!");
+      }
     }
   };
 
