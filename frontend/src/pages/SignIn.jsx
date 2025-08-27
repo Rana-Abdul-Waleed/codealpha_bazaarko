@@ -8,6 +8,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
+import axios from "axios"; // Import axios package
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
@@ -29,26 +30,37 @@ const SignIn = () => {
 
     try {
       dispatch(signInStart());
-      const res = await fetch("/backend/auth/signin", {
-        method: "POST",
+
+      // Replace fetch with axios
+      const res = await axios.post("/backend/auth/signin", formData, {
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
       });
-      const data = await res.json();
+
+      const data = res.data; // Axios stores response data in .data property
+
       if (data.success === false) {
         toast.error(data.message || "Sign in failed!");
         dispatch(signInFailure(data.message));
         return;
       }
-      if (res.ok) {
+
+      if (res.status === 200) {
         dispatch(signInSuccess(data));
         toast.success("Logged in successfully!");
         navigate("/");
       }
+
       setSubmitForm(true);
     } catch (error) {
-      toast.error(error.message || "Something went wrong!");
-      dispatch(signInFailure(error.message));
+      // Axios error handling - check if error has response data
+      let errorMsg = error.message || "Something went wrong!";
+
+      if (error.response && error.response.data) {
+        errorMsg = error.response.data.message || errorMsg;
+      }
+
+      toast.error(errorMsg);
+      dispatch(signInFailure(errorMsg));
     }
   };
 
