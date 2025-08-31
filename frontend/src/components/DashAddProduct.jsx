@@ -7,6 +7,7 @@ import {
   addProductFailure,
 } from "../redux/product/productSlice.js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Import axios
 
 const categoryFields = {
   mobile: [
@@ -99,14 +100,18 @@ const DashAddProduct = () => {
 
     try {
       dispatch(addProductStart());
-      const res = await fetch("/backend/product/addProduct", {
-        method: "POST",
-        credentials: "include",
-        body: form,
+
+      // Replace fetch with axios for form data
+      const res = await axios.post("/backend/product/addProduct", form, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Important for file uploads
+        },
+        withCredentials: true, // Equivalent to credentials: "include"
       });
 
-      const data = await res.json();
-      if (res.ok) {
+      const data = res.data; // Axios stores response data in .data property
+
+      if (res.status === 201) {
         dispatch(addProductSuccess(data.product));
         toast.success(data.message);
         e.target.reset(); // clear form
@@ -117,9 +122,16 @@ const DashAddProduct = () => {
         dispatch(addProductFailure(data.message));
         toast.error(data.message);
       }
-    } catch (err) {
-      dispatch(addProductFailure("Something went wrong!"));
-      toast.error("Something went wrong!");
+    } catch (error) {
+      // Axios error handling
+      let errorMessage = "Something went wrong!";
+
+      if (error.response && error.response.data) {
+        errorMessage = error.response.data.message || errorMessage;
+      }
+
+      dispatch(addProductFailure(errorMessage));
+      toast.error(errorMessage);
     }
   };
 
