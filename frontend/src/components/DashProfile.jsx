@@ -7,6 +7,7 @@ import {
 } from "../redux/user/userSlice.js";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
+import axios from "axios"; // Import axios
 
 const DashProfile = () => {
   const { currentUser, error, loading } = useSelector((state) => state.user);
@@ -31,23 +32,21 @@ const DashProfile = () => {
       return;
     }
 
-    // const formDataToSend = new FormData();
-
-    // if (formData.username) formDataToSend.append("username", formData.username);
-    // if (formData.password) formDataToSend.append("password", formData.password);
-
     try {
       dispatch(updateStart());
-      const res = await fetch(
+
+      // Replace fetch with axios
+      const res = await axios.put(
         `/backend/user/updateUser/${currentUser.user._id}`,
+        formData,
         {
-          method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
         }
       );
-      const data = await res.json();
-      if (!res.ok) {
+
+      const data = res.data; // Axios stores response data in .data property
+
+      if (res.status !== 200) {
         dispatch(updateFailure(data.message));
         toast.error(data.message || "Something went wrong!");
       } else {
@@ -55,8 +54,15 @@ const DashProfile = () => {
         toast.success(data.message || "Account info updated successfully.");
       }
     } catch (error) {
-      dispatch(updateFailure(error.message));
-      toast.error(error.message || "Something went wrong!");
+      // Axios error handling
+      let errorMsg = error.message || "Something went wrong!";
+
+      if (error.response && error.response.data) {
+        errorMsg = error.response.data.message || errorMsg;
+      }
+
+      dispatch(updateFailure(errorMsg));
+      toast.error(errorMsg);
     }
   };
 
