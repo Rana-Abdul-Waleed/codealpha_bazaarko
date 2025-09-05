@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; // Added useDispatch
 import { toast } from "react-toastify";
-import axios from "axios"; // Import axios
+import axios from "axios";
+import {
+  getAllProductsStart,
+  getAllProductsSuccess,
+  getAllProductsFailure,
+} from "../redux/product/productSlice.js"; // Import new actions
 
 const DashProducts = () => {
   const { currentUser } = useSelector((state) => state.user);
-  const [products, setProducts] = useState([]);
+  const {
+    products,
+    loading,
+    error: errorMessage,
+  } = useSelector((state) => state.product); // Get products from Redux
+  const dispatch = useDispatch(); // Initialize dispatch
   const navigate = useNavigate();
 
   // Base URL of backend (set this in frontend .env as VITE_BACKEND_URL=http://localhost:8000)
@@ -15,6 +25,8 @@ const DashProducts = () => {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
+        dispatch(getAllProductsStart()); // Start loading state
+
         // Replace fetch with axios
         const res = await axios.get("/backend/product/getAllProducts", {
           withCredentials: true, // Equivalent to credentials: "include"
@@ -23,25 +35,30 @@ const DashProducts = () => {
         const data = res.data; // Axios stores response data in .data property
 
         if (res.status === 200 && data.success) {
-          setProducts(data.data || []);
+          dispatch(getAllProductsSuccess(data.data || [])); // Update Redux store with fetched products
+          console.log(products);
         } else {
+          dispatch(
+            getAllProductsFailure(data.message || "Failed to load products")
+          );
           toast.error(data.message || "Failed to load products");
         }
       } catch (error) {
         console.error("Error fetching products:", error);
 
         // Axios error handling
-        let errorMsg = "Something went wrong while loading products";
-        if (error.response && error.response.data) {
-          errorMsg = error.response.data.message || errorMsg;
-        }
+        // let errorMsg = "Something went wrong while loading products";
+        // if (error.response && error.response.data) {
+        //   errorMsg = error.response.data.message || errorMsg;
+        // }
 
-        toast.error(errorMsg);
+        dispatch(getAllProductsFailure(error || "Something went wrong!"));
+        toast.error(error || "Something went wrong!");
       }
     };
 
     getAllProducts();
-  }, []);
+  }, []); // Added dispatch to dependency array
 
   return (
     <div className="px-4 md:px-6 pt-4 pb-12">
@@ -67,8 +84,14 @@ const DashProducts = () => {
         All products
       </h2>
 
+      {/* Loading State */}
+      {loading && <p className="text-gray-600">Loading products...</p>}
+
+      {/* Error State */}
+      {errorMessage && <p className="text-red-600">Error: {errorMessage}</p>}
+
       {/* Products Grid */}
-      {products.length > 0 ? (
+      {!loading && products && products.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((item) => {
             // Build image src robustly:
@@ -100,7 +123,6 @@ const DashProducts = () => {
                   </div>
                 )}
 
-                {/* ...rest unchanged */}
                 <div className="p-4 flex flex-col gap-2">
                   <div className="flex justify-between items-center font-semibold text-gray-800 gap-3">
                     <h2 className="truncate max-w-[150px] sm:max-w-[180px]">
@@ -143,7 +165,10 @@ const DashProducts = () => {
           })}
         </div>
       ) : (
-        <p className="text-gray-600">No products found.</p>
+        !loading &&
+        (!products || products.length === 0) && (
+          <p className="text-gray-600">No products found.</p>
+        )
       )}
     </div>
   );

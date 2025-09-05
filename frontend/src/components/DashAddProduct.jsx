@@ -69,7 +69,11 @@ const categoryFields = {
 
 const DashAddProduct = () => {
   const { currentUser } = useSelector((state) => state.user);
-  const { loading } = useSelector((state) => state.product);
+  const {
+    currentProduct,
+    loading,
+    error: errorMessage,
+  } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -113,6 +117,7 @@ const DashAddProduct = () => {
 
       if (res.status === 201) {
         dispatch(addProductSuccess(data.product));
+        console.log(currentProduct);
         toast.success(data.message);
         e.target.reset(); // clear form
         setImages([]);
@@ -124,14 +129,13 @@ const DashAddProduct = () => {
       }
     } catch (error) {
       // Axios error handling
-      let errorMessage = "Something went wrong!";
+      // let errorMessage = "Something went wrong!";
+      // if (error.response && error.response.data) {
+      //   errorMessage = error.response.data.message || errorMessage;
+      // }
 
-      if (error.response && error.response.data) {
-        errorMessage = error.response.data.message || errorMessage;
-      }
-
-      dispatch(addProductFailure(errorMessage));
-      toast.error(errorMessage);
+      dispatch(addProductFailure(error || "Something went wrong!"));
+      toast.error(error || "Something went wrong!");
     }
   };
 
@@ -207,8 +211,9 @@ const DashAddProduct = () => {
         <button
           type="submit"
           className="bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600 transition duration-200"
+          disabled={loading}
         >
-          Add Product
+          {loading ? "Adding Product..." : "Add Product"}
         </button>
       </form>
     </div>
