@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import axios from "axios"; // Import axios
 
 const DashProducts = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -14,20 +15,28 @@ const DashProducts = () => {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const res = await fetch("/backend/product/getAllProducts", {
-          credentials: "include",
+        // Replace fetch with axios
+        const res = await axios.get("/backend/product/getAllProducts", {
+          withCredentials: true, // Equivalent to credentials: "include"
         });
 
-        const data = await res.json();
+        const data = res.data; // Axios stores response data in .data property
 
-        if (res.ok && data.success) {
+        if (res.status === 200 && data.success) {
           setProducts(data.data || []);
         } else {
           toast.error(data.message || "Failed to load products");
         }
       } catch (error) {
         console.error("Error fetching products:", error);
-        toast.error("Something went wrong while loading products");
+
+        // Axios error handling
+        let errorMsg = "Something went wrong while loading products";
+        if (error.response && error.response.data) {
+          errorMsg = error.response.data.message || errorMsg;
+        }
+
+        toast.error(errorMsg);
       }
     };
 
