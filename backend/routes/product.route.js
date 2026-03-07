@@ -3,6 +3,7 @@ import { verifyToken } from "../utils/verifyUser.js";
 import {
   addProduct,
   getAllProducts,
+  getProductById,
 } from "../controllers/product.controller.js";
 import upload from "../middleware/multer.js";
 
@@ -16,5 +17,6 @@ router.post(
 );
 
 router.get("/getAllProducts", verifyToken, getAllProducts);
+router.get("/getProductById/:productId", verifyToken, getProductById);
 
 export default router;

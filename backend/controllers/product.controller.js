@@ -77,3 +77,53 @@ export const getAllProducts = async (req, res, next) => {
     next(err);
   }
 };
+
+// Get Product by ID api
+export const getProductById = async (req, res, next) => {
+  try {
+    const { productId } = req.params;
+
+    // Validate product ID
+    if (!productId) {
+      return next(errorHandler(400, "Product ID is required"));
+    }
+
+    // Find product by ID
+    const product = await Product.findById(productId);
+
+    // Check if product exists
+    if (!product) {
+      return next(errorHandler(404, "Product not found"));
+    }
+
+    // Prefer a configured server base URL (useful when Host header is unreliable due to proxy)
+    const baseUrl =
+      process.env.SERVER_URL || `${req.protocol}://${req.get("host")}`;
+
+    // Convert relative image paths to absolute URLs
+    const updatedProduct = {
+      ...product._doc,
+      product_images: (product.product_images || []).map((imgPath) =>
+        /^https?:\/\//i.test(imgPath) ? imgPath : `${baseUrl}${imgPath}`
+      ),
+    };
+
+    console.log(updatedProduct);
+
+    // Return product data
+    res.status(200).json({
+      success: true,
+      message: "Product retrieved successfully",
+      data: updatedProduct,
+    });
+  } catch (error) {
+    // Handle CastError (invalid MongoDB ObjectId)
+    if (error.name === "CastError") {
+      return next(errorHandler(400, "Invalid product ID format"));
+    }
+
+    // Handle other errors
+    console.error("Error in getProductById:", error);
+    next(errorHandler(500, "Internal server error while fetching product"));
+  }
+};

@@ -88,7 +88,7 @@ const DashProducts = () => {
       {loading && <p className="text-gray-600">Loading products...</p>}
 
       {/* Error State */}
-      {errorMessage && <p className="text-red-600">Error: {errorMessage}</p>}
+      {/* {errorMessage && <p className="text-red-600">Error: {errorMessage}</p>} */}
 
       {/* Products Grid */}
       {!loading && products && products.length > 0 ? (
